@@ -28,6 +28,12 @@
         android:text="Жми!"
         app:icon="@android:drawable/btn_star_big_on" />
 
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Переключатель"
+        android:textSize="5mm"/>
+
 
 
 </LinearLayout>
