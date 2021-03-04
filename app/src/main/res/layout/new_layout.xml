@@ -41,6 +41,16 @@
         android:clickable="true"
         android:text="Флажок" />
 
+    <ToggleButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:clickable="true"
+        android:textOff="Выключена"
+        android:textOn="Включена"
+        android:textColor="@color/purple_700"
+        android:textSize="4mm"/>
+
 
 
 </LinearLayout>
