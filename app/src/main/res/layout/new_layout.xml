@@ -34,6 +34,13 @@
         android:text="Переключатель"
         android:textSize="5mm"/>
 
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:clickable="true"
+        android:text="Флажок" />
+
 
 
 </LinearLayout>
