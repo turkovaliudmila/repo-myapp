@@ -156,4 +156,15 @@
         app:layout_constraintTop_toBottomOf="@+id/button9"
         android:layout_margin="8dp"/>
 
+    <Button
+        android:id="@+id/button_res"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/_res"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button0"
+        android:layout_margin="8dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
