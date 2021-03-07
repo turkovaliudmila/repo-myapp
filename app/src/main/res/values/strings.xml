@@ -14,6 +14,6 @@
     <string name="_plus">+</string>
     <string name="_minus">-</string>
     <string name="_multiplication">*</string>
-    <string name="_div">%</string>
+    <string name="_div">/</string>
     <string name="_res">=</string>
 </resources>
