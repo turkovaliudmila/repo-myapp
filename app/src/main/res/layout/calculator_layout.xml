@@ -21,6 +21,7 @@
         app:layout_constraintTop_toBottomOf="@id/spacer"
         app:layout_constraintEnd_toStartOf="@id/button2"
         app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
         android:layout_margin="8dp"
         />
 
@@ -71,6 +72,9 @@
         android:textSize="@dimen/text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button1"
+        app:layout_constraintEnd_toStartOf="@id/button5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
         android:layout_margin="8dp"/>
 
     <Button
@@ -81,6 +85,9 @@
         android:textSize="@dimen/text_size"
         app:layout_constraintStart_toEndOf="@+id/button4"
         app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@id/button6"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
         android:layout_margin="8dp"/>
 
     <Button
@@ -91,6 +98,9 @@
         android:textSize="@dimen/text_size"
         app:layout_constraintStart_toEndOf="@+id/button5"
         app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@id/button_minus"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
         android:layout_margin="8dp"/>
 
     <Button
@@ -102,6 +112,8 @@
         app:layout_constraintStart_toEndOf="@+id/button6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_plus"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
         android:layout_margin="8dp"/>
 
     <Button
@@ -112,6 +124,9 @@
         android:textSize="@dimen/text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintEnd_toStartOf="@id/button8"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
         android:layout_margin="8dp"/>
 
     <Button
@@ -122,6 +137,9 @@
         android:textSize="@dimen/text_size"
         app:layout_constraintStart_toEndOf="@+id/button7"
         app:layout_constraintTop_toBottomOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@id/button9"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
         android:layout_margin="8dp"/>
 
     <Button
@@ -132,6 +150,9 @@
         android:textSize="@dimen/text_size"
         app:layout_constraintStart_toEndOf="@+id/button8"
         app:layout_constraintTop_toBottomOf="@+id/button6"
+        app:layout_constraintEnd_toStartOf="@id/button_multi"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
         android:layout_margin="8dp"/>
 
     <Button
@@ -143,7 +164,8 @@
         app:layout_constraintStart_toEndOf="@+id/button9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_minus"
-
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
         android:layout_margin="8dp"/>
 
     <Button
@@ -153,18 +175,10 @@
         android:text="@string/_0"
         android:textSize="@dimen/text_size"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button8"
+        app:layout_constraintTop_toBottomOf="@+id/button7"
         app:layout_constraintEnd_toStartOf="@id/button_dot"
-        android:layout_margin="8dp"/>
-
-    <Button
-        android:id="@+id/button_div"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/_div"
-        android:textSize="@dimen/text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_multi"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
         android:layout_margin="8dp"/>
 
     <Button
@@ -176,6 +190,21 @@
         app:layout_constraintStart_toEndOf="@+id/button0"
         app:layout_constraintEnd_toStartOf="@+id/button_div"
         app:layout_constraintTop_toBottomOf="@+id/button9"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_margin="8dp"/>
+
+    <Button
+        android:id="@+id/button_div"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_div"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_dot"
+        app:layout_constraintTop_toBottomOf="@+id/button_multi"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
         android:layout_margin="8dp"/>
 
     <Button
@@ -187,6 +216,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button0"
+        app:layout_constraintVertical_chainStyle="packed"
         android:layout_margin="8dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
