@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonRes;
 
     private TextView calcTablo;
+
+    private Calculator calculator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,40 @@ public class MainActivity extends AppCompatActivity {
 
         calcTablo = findViewById(R.id.text);
 
+        calculator = new Calculator();
+
+
+        initButtonClickListener(button1);
+        initButtonClickListener(button2);
+        initButtonClickListener(button3);
+        initButtonClickListener(button4);
+        initButtonClickListener(button5);
+        initButtonClickListener(button6);
+        initButtonClickListener(button7);
+        initButtonClickListener(button8);
+        initButtonClickListener(button9);
+        initButtonClickListener(button0);
+
+    }
+
+    private void initButtonClickListener(Button btn) {
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (btn.getId()) {
+                    case R.id.button1:  break;
+                    case R.id.button2:  break;
+                    case R.id.button3:  break;
+                    case R.id.button4:  break;
+                    case R.id.button5:  break;
+                    case R.id.button6:  break;
+                    case R.id.button7:  break;
+                    case R.id.button8:  break;
+                    case R.id.button9:  break;
+                    case R.id.button0:  break;
+                }
+            }
+        });
 
     }
 }
