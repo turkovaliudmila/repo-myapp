@@ -6,6 +6,8 @@ public class Calculator {
     private double secondNumber;
     private String operator;
     private String textTablo;
+    private int counterAfterDot1;
+    private int counterAfterDot2;
 
     public Calculator() {
         inputMode    = 0;
@@ -13,6 +15,8 @@ public class Calculator {
         secondNumber = 0;
         operator     = "";
         textTablo    = "";
+        counterAfterDot1 = 0;
+        counterAfterDot1 = 0;
     }
 
     public double getFirstNumber() {
@@ -65,16 +69,28 @@ public class Calculator {
             firstNumber  = 0;
             secondNumber = 0;
             operator     = "";
+            counterAfterDot1 = 0;
+            counterAfterDot2 = 0;
         }
         return resNumber;
     }
 
     public void inputNumber(String textCalc, int number) {
         if (inputMode == 0) {
-            firstNumber = firstNumber * 10 + number;
+            if (counterAfterDot1 == 0) {
+                firstNumber = firstNumber * 10 + number;
+            } else {
+                firstNumber = firstNumber + number / Math.pow(10, counterAfterDot1);
+                counterAfterDot1++;
+            }
             textTablo = textCalc + number;
         } else if (inputMode == 1) {
-            secondNumber = secondNumber * 10 + number;
+            if (counterAfterDot2 == 0) {
+                secondNumber = secondNumber * 10 + number;
+            } else {
+                secondNumber = secondNumber + number / Math.pow(10, counterAfterDot2);
+                counterAfterDot2++;
+            }
             textTablo = textCalc + number;
         } else if (inputMode == 2) {
             firstNumber = firstNumber * 10 + number;
@@ -99,6 +115,27 @@ public class Calculator {
         } else if (inputMode == 1) {
             operator = operation;
             textTablo = "" + firstNumber + operation + secondNumber;
+        }
+    }
+
+    public void inputDot(String textCalc) {
+        if ((inputMode == 0||inputMode == 2)&&(counterAfterDot1 == 0)){
+            if(inputMode==2) {
+                inputMode = 0;
+            }
+            counterAfterDot1 = 1;
+            if(firstNumber == 0) {
+                textTablo = "0.";
+            } else {
+                textTablo = textCalc + ".";
+            }
+        } else if ((inputMode == 1)&&(counterAfterDot2 == 0)) {
+            counterAfterDot2 = 1;
+            if(secondNumber == 0) {
+                textTablo = textCalc + "0.";
+            } else {
+                textTablo = textCalc + ".";
+            }
         }
     }
 
