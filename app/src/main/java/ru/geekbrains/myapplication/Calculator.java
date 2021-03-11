@@ -87,4 +87,15 @@ public class Calculator {
         this.textTablo = textTablo;
     }
 
+    public void inputOperation(String textCalc, String operation) {
+        if (inputMode == 0) {
+            inputMode = 1;
+            operator = operation;
+            textTablo = textCalc + operation;
+        } else if (inputMode == 1) {
+            operator = operation;
+            textTablo = "" + firstNumber + operation + secondNumber;
+        }
+    }
+
 }
