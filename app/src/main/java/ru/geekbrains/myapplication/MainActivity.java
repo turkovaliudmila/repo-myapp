@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
         initButtonClickListener(buttonMulti);
         initButtonClickListener(buttonDiv);
 
+        initButtonClickListener(buttonRes);
+
 
     }
 
@@ -138,7 +140,10 @@ public class MainActivity extends AppCompatActivity {
                         calculator.inputOperation(calcTablo.getText().toString(), "*");
                         calcTablo.setText(calculator.getTextTablo());
                         break;
-
+                    case R.id.button_res:
+                        double resNumber = calculator.getRes();
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
                 }
             }
         });
