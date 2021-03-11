@@ -69,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
         initButtonClickListener(button9);
         initButtonClickListener(button0);
 
+        initButtonClickListener(buttonPlus);
+        initButtonClickListener(buttonMinus);
+        initButtonClickListener(buttonMulti);
+        initButtonClickListener(buttonDiv);
+
+
     }
 
     private void initButtonClickListener(Button btn) {
@@ -116,6 +122,23 @@ public class MainActivity extends AppCompatActivity {
                         calculator.inputNumber(calcTablo.getText().toString(), 0);
                         calcTablo.setText(calculator.getTextTablo());
                         break;
+                    case R.id.button_plus:
+                        calculator.inputOperation(calcTablo.getText().toString(), "+");
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button_minus:
+                        calculator.inputOperation(calcTablo.getText().toString(), "-");
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button_div:
+                        calculator.inputOperation(calcTablo.getText().toString(), "/");
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button_multi:
+                        calculator.inputOperation(calcTablo.getText().toString(), "*");
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+
                 }
             }
         });
