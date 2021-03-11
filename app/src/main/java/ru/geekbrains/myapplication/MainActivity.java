@@ -76,16 +76,46 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switch (btn.getId()) {
-                    case R.id.button1:  break;
-                    case R.id.button2:  break;
-                    case R.id.button3:  break;
-                    case R.id.button4:  break;
-                    case R.id.button5:  break;
-                    case R.id.button6:  break;
-                    case R.id.button7:  break;
-                    case R.id.button8:  break;
-                    case R.id.button9:  break;
-                    case R.id.button0:  break;
+                    case R.id.button1:
+                        calculator.inputNumber(calcTablo.getText().toString(), 1);
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button2:
+                        calculator.inputNumber(calcTablo.getText().toString(), 2);
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button3:
+                        calculator.inputNumber(calcTablo.getText().toString(), 3);
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button4:
+                        calculator.inputNumber(calcTablo.getText().toString(), 4);
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button5:
+                        calculator.inputNumber(calcTablo.getText().toString(), 5);
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button6:
+                        calculator.inputNumber(calcTablo.getText().toString(), 6);
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button7:
+                        calculator.inputNumber(calcTablo.getText().toString(), 7);
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button8:
+                        calculator.inputNumber(calcTablo.getText().toString(), 8);
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button9:
+                        calculator.inputNumber(calcTablo.getText().toString(), 9);
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button0:
+                        calculator.inputNumber(calcTablo.getText().toString(), 0);
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
                 }
             }
         });
