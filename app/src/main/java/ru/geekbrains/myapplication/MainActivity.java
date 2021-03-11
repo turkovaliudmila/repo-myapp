@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonMulti;
     private Button buttonDiv;
     private Button buttonRes;
+    private Button buttonDot;
 
     private TextView calcTablo;
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         button8 = findViewById(R.id.button8);
         button9 = findViewById(R.id.button9);
         button0 = findViewById(R.id.button0);
+        buttonDot   = findViewById(R.id.button_dot);
 
         buttonPlus  = findViewById(R.id.button_plus);
         buttonMinus = findViewById(R.id.button_minus);
@@ -75,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
         initButtonClickListener(buttonDiv);
 
         initButtonClickListener(buttonRes);
+
+        initButtonClickListener(buttonDot);
 
 
     }
@@ -142,6 +146,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.button_res:
                         double resNumber = calculator.getRes();
+                        calcTablo.setText(calculator.getTextTablo());
+                        break;
+                    case R.id.button_dot:
+                        calculator.inputDot(calcTablo.getText().toString());
                         calcTablo.setText(calculator.getTextTablo());
                         break;
                 }
