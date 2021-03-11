@@ -48,18 +48,25 @@ public class Calculator {
     }
 
     public double getRes() {
+        double resNumber = 0;
         if (inputMode == 1 && operator != "") {
-            if (operator == "ADD") {
-                return firstNumber + secondNumber;
-            } else if (operator == "DEL") {
-                return firstNumber - secondNumber;
-            } else if (operator == "MULTI") {
-                return firstNumber * secondNumber;
-            } else if (operator == "DIV") {
-                return firstNumber / secondNumber;
+            inputMode = 2;
+            if (operator == "+") {
+                resNumber = firstNumber + secondNumber;
+            } else if (operator == "-") {
+                resNumber = firstNumber - secondNumber;
+            } else if (operator == "*") {
+                resNumber = firstNumber * secondNumber;
+            } else if (operator == "/") {
+                resNumber = firstNumber / secondNumber;
             }
+            textTablo = "" + resNumber;
+
+            firstNumber  = 0;
+            secondNumber = 0;
+            operator     = "";
         }
-        return 0;
+        return resNumber;
     }
 
     public void inputNumber(String textCalc, int number) {
@@ -70,12 +77,9 @@ public class Calculator {
             secondNumber = secondNumber * 10 + number;
             textTablo = textCalc + number;
         } else if (inputMode == 2) {
+            firstNumber = firstNumber * 10 + number;
+            textTablo = "" + number;
             inputMode = 0;
-            firstNumber = number;
-            secondNumber = 0;
-            operator = "";
-            this.textTablo = "";
-            textTablo = "";
         }
     }
 
