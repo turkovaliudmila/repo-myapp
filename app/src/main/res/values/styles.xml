@@ -9,4 +9,9 @@
         <item name="android:layout_marginEnd">@dimen/default_margin</item>
         <item name="android:layout_marginTop">@dimen/default_margin</item>
     </style>
+    <style name="AppThemeLight" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">#e91e63</item>
+        <item name="colorPrimaryDark">#b0003a</item>
+        <item name="colorAccent">#ff6090</item>
+    </style>
 </resources>
