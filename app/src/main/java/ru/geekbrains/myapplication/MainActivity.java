@@ -3,12 +3,19 @@ package ru.geekbrains.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String NameSharedPrefrences = "LOGIN";
+    private static final String AppTheme = "MyStyle";
+
+    private static final int AppThemeLight = 0;
+    private static final int AppThemeDark = 1;
 
     private Button button1;
     private Button button2;
@@ -35,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setTheme(getAppTheme(R.style.MyStyle));
         setContentView(R.layout.calculator_layout);
 
         button1 = findViewById(R.id.button1);
@@ -80,7 +88,24 @@ public class MainActivity extends AppCompatActivity {
 
         initButtonClickListener(buttonDot);
 
+        initThemeChooser();
 
+
+    }
+
+    private void initThemeChooser() {
+        initRadioButton(findViewById(R.id.RadioButtonMaterialLight), AppThemeLight);
+        initRadioButton(findViewById(R.id.RadioButtonMaterialDark), AppThemeDark);
+    }
+
+    private void initRadioButton(View button, final int codeStyle) {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAppTheme(codeStyle);
+                recreate();
+            }
+        });
     }
 
     private void initButtonClickListener(Button btn) {
@@ -156,5 +181,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private int getAppTheme(int codeStyle) {
+        return codeStyleToStyleId(getCodeStyle(codeStyle));
+    }
+
+    private int getCodeStyle(int codeStyle) {
+        SharedPreferences sharedPreferences = getSharedPreferences(NameSharedPrefrences, MODE_PRIVATE);
+        return sharedPreferences.getInt(AppTheme, codeStyle);
+    }
+
+    private int codeStyleToStyleId(int codeStyle) {
+        switch (codeStyle) {
+            case AppThemeLight:
+                return R.style.AppThemeLight;
+            case AppThemeDark:
+                return R.style.AppThemeDark;
+            default:
+                return R.style.MyStyle;
+        }
+    }
+
+    private void setAppTheme(int codeStyle) {
+        SharedPreferences sharedPreferences = getSharedPreferences(NameSharedPrefrences, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(AppTheme, codeStyle);
+        editor.apply();
     }
 }
