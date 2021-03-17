@@ -10,14 +10,17 @@ import android.widget.Button;
 public class SettingsActivity extends AppCompatActivity {
 
     private static final String NAME_SHARED_PREFRENCES = "LOGIN";
-    private static final String appTheme = "MyStyle";
+    private static final String APP_THEME_DEFAULT = "MyStyle";
 
-    private static final int appThemeLight = 0;
-    private static final int appThemeDark = 1;
+    private static final int APP_THEME_LIGHT = 0;
+    private static final int APP_THEME_DARK = 1;
+
+    private static final String CURRENT_THEME = "CURRENT_THEME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(getAppTheme(R.style.MyStyle));
         setContentView(R.layout.activity_settings);
 
         Button btnReturn = findViewById(R.id.ReturnButton);
@@ -32,8 +35,8 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void initThemeChooser() {
-        initRadioButton(findViewById(R.id.RadioButtonMaterialLight), appThemeLight);
-        initRadioButton(findViewById(R.id.RadioButtonMaterialDark), appThemeDark);
+        initRadioButton(findViewById(R.id.RadioButtonMaterialLight), APP_THEME_LIGHT);
+        initRadioButton(findViewById(R.id.RadioButtonMaterialDark), APP_THEME_DARK);
     }
 
     private void initRadioButton(View button, final int codeStyle) {
@@ -52,14 +55,14 @@ public class SettingsActivity extends AppCompatActivity {
 
     private int getCodeStyle(int codeStyle) {
         SharedPreferences sharedPreferences = getSharedPreferences(NAME_SHARED_PREFRENCES, MODE_PRIVATE);
-        return sharedPreferences.getInt(appTheme, codeStyle);
+        return sharedPreferences.getInt(APP_THEME_DEFAULT, codeStyle);
     }
 
     private int codeStyleToStyleId(int codeStyle) {
         switch (codeStyle) {
-            case appThemeLight:
+            case APP_THEME_LIGHT:
                 return R.style.AppThemeLight;
-            case appThemeDark:
+            case APP_THEME_DARK:
                 return R.style.AppThemeDark;
             default:
                 return R.style.MyStyle;
@@ -69,7 +72,7 @@ public class SettingsActivity extends AppCompatActivity {
     private void setAppTheme(int codeStyle) {
         SharedPreferences sharedPreferences = getSharedPreferences(NAME_SHARED_PREFRENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(appTheme, codeStyle);
+        editor.putInt(APP_THEME_DEFAULT, codeStyle);
         editor.apply();
     }
 }

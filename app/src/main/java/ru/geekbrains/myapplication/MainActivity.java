@@ -13,10 +13,12 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private static final String NAME_SHARED_PREFRENCES = "LOGIN";
-    private static final String appTheme = "MyStyle";
+    private static final String APP_THEME_DEFAULT = "MyStyle";
 
-    private static final int appThemeLight = 0;
-    private static final int appThemeDark = 1;
+    private static final int APP_THEME_LIGHT = 0;
+    private static final int APP_THEME_DARK = 1;
+
+    private static final String CURRENT_THEME = "CURRENT_THEME";
 
     private Button button1;
     private Button button2;
@@ -174,14 +176,14 @@ public class MainActivity extends AppCompatActivity {
 
     private int getCodeStyle(int codeStyle) {
         SharedPreferences sharedPreferences = getSharedPreferences(NAME_SHARED_PREFRENCES, MODE_PRIVATE);
-        return sharedPreferences.getInt(appTheme, codeStyle);
+        return sharedPreferences.getInt(APP_THEME_DEFAULT, codeStyle);
     }
 
     private int codeStyleToStyleId(int codeStyle) {
         switch (codeStyle) {
-            case appThemeLight:
+            case APP_THEME_LIGHT:
                 return R.style.AppThemeLight;
-            case appThemeDark:
+            case APP_THEME_DARK:
                 return R.style.AppThemeDark;
             default:
                 return R.style.MyStyle;
@@ -191,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
     private void setAppTheme(int codeStyle) {
         SharedPreferences sharedPreferences = getSharedPreferences(NAME_SHARED_PREFRENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(appTheme, codeStyle);
+        editor.putInt(APP_THEME_DEFAULT, codeStyle);
         editor.apply();
     }
 
