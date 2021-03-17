@@ -20,4 +20,5 @@
     <string name="material_dark">Dark Theme</string>
     <string name="_select_theme">Select theme:</string>
     <string name="text_return">Return</string>
+    <string name="settings">Settings</string>
 </resources>

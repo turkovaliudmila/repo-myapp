@@ -209,25 +209,15 @@
         app:layout_constraintTop_toBottomOf="@+id/button0"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <RadioGroup
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/SettingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/settings"
+        android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_res"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/RadioButtonMaterialLight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/material_light" />
-
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/RadioButtonMaterialDark"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/material_dark" />
-    </RadioGroup>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
