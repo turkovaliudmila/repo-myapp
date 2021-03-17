@@ -6,4 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
+    <TextView
+        android:id="@+id/TitleSelectTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_select_theme"
+        android:textSize="@dimen/size_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TitleSelectTheme" >
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/RadioButtonMaterialLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/material_light" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/RadioButtonMaterialDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/material_dark" />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,4 +18,5 @@
     <string name="_res">=</string>
     <string name="material_light">Light Theme</string>
     <string name="material_dark">Dark Theme</string>
+    <string name="_select_theme">Select theme:</string>
 </resources>
