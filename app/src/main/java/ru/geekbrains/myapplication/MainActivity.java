@@ -3,6 +3,7 @@ package ru.geekbrains.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -87,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         initButtonClickListener(buttonRes);
 
         initButtonClickListener(buttonDot);
+
+        initButtonSettings();
 
     }
 
@@ -190,5 +193,16 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(appTheme, codeStyle);
         editor.apply();
+    }
+
+    private void initButtonSettings() {
+        Button btnSettings = findViewById(R.id.SettingsButton);
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent runSettings = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(runSettings);
+            }
+        });
     }
 }
