@@ -20,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String CURRENT_THEME = "CURRENT_THEME";
 
+    private static final int REQUEST_CODE_SETTING_ACTIVITY = 99;
+
+    private int curAppTheme;
+
     private Button button1;
     private Button button2;
     private Button button3;
@@ -47,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(getAppTheme(R.style.MyStyle));
         setContentView(R.layout.calculator_layout);
+
+        curAppTheme = 0;
 
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
@@ -203,8 +209,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent runSettings = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(runSettings);
+                runSettings.putExtra(CURRENT_THEME, curAppTheme);
+                startActivityForResult(runSettings, REQUEST_CODE_SETTING_ACTIVITY);
             }
         });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode != REQUEST_CODE_SETTING_ACTIVITY) {
+            super.onActivityResult(requestCode, resultCode, data);
+            return;
+        }
+
+        if (requestCode == RESULT_OK) {
+            curAppTheme = data.getIntExtra(CURRENT_THEME, 0);
+            setAppTheme(curAppTheme);
+            recreate();
+        }
     }
 }
