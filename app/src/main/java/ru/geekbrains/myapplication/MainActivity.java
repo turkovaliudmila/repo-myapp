@@ -222,8 +222,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (requestCode == RESULT_OK) {
-            curAppTheme = data.getIntExtra(CURRENT_THEME, 0);
+        if (resultCode == RESULT_OK) {
+            curAppTheme = data.getExtras().getInt(CURRENT_THEME);
             setAppTheme(curAppTheme);
             recreate();
         }

@@ -8,6 +8,7 @@ import android.database.CursorIndexOutOfBoundsException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioGroup;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -21,6 +22,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     private int curAppTheme;
 
+    private RadioGroup radioGroup;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +32,24 @@ public class SettingsActivity extends AppCompatActivity {
         setAppTheme(curAppTheme);
         setContentView(R.layout.activity_settings);
 
+        radioGroup = (RadioGroup)findViewById(R.id.RadioButtons);
 
         Button btnReturn = findViewById(R.id.ReturnButton);
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentResult = new Intent();
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+                switch (selectedId) {
+                    case R.id.RadioButtonMaterialLight: {
+                        curAppTheme = APP_THEME_LIGHT;
+                        break;
+                    }
+                    case R.id.RadioButtonMaterialDark: {
+                        curAppTheme = APP_THEME_DARK;
+                        break;
+                    }
+                }
                 intentResult.putExtra(CURRENT_THEME, curAppTheme);
                 setResult(RESULT_OK, intentResult);
                 finish();
@@ -53,7 +68,6 @@ public class SettingsActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                curAppTheme = codeStyle;
                 setAppTheme(codeStyle);
                 recreate();
             }
