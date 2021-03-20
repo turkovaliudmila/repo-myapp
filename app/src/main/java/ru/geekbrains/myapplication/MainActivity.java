@@ -3,6 +3,7 @@ package ru.geekbrains.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +12,17 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String NameSharedPrefrences = "LOGIN";
-    private static final String AppTheme = "MyStyle";
+    private static final String NAME_SHARED_PREFRENCES = "LOGIN";
+    private static final String APP_THEME_DEFAULT = "MyStyle";
 
-    private static final int AppThemeLight = 0;
-    private static final int AppThemeDark = 1;
+    private static final int APP_THEME_LIGHT = 0;
+    private static final int APP_THEME_DARK = 1;
+
+    private static final String CURRENT_THEME = "CURRENT_THEME";
+
+    private static final int REQUEST_CODE_SETTING_ACTIVITY = 99;
+
+    private int curAppTheme;
 
     private Button button1;
     private Button button2;
@@ -44,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(getAppTheme(R.style.MyStyle));
         setContentView(R.layout.calculator_layout);
+
+        curAppTheme = 0;
 
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
@@ -88,24 +97,8 @@ public class MainActivity extends AppCompatActivity {
 
         initButtonClickListener(buttonDot);
 
-        initThemeChooser();
+        initButtonSettings();
 
-
-    }
-
-    private void initThemeChooser() {
-        initRadioButton(findViewById(R.id.RadioButtonMaterialLight), AppThemeLight);
-        initRadioButton(findViewById(R.id.RadioButtonMaterialDark), AppThemeDark);
-    }
-
-    private void initRadioButton(View button, final int codeStyle) {
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setAppTheme(codeStyle);
-                recreate();
-            }
-        });
     }
 
     private void initButtonClickListener(Button btn) {
@@ -188,15 +181,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private int getCodeStyle(int codeStyle) {
-        SharedPreferences sharedPreferences = getSharedPreferences(NameSharedPrefrences, MODE_PRIVATE);
-        return sharedPreferences.getInt(AppTheme, codeStyle);
+        SharedPreferences sharedPreferences = getSharedPreferences(NAME_SHARED_PREFRENCES, MODE_PRIVATE);
+        return sharedPreferences.getInt(APP_THEME_DEFAULT, codeStyle);
     }
 
     private int codeStyleToStyleId(int codeStyle) {
         switch (codeStyle) {
-            case AppThemeLight:
+            case APP_THEME_LIGHT:
                 return R.style.AppThemeLight;
-            case AppThemeDark:
+            case APP_THEME_DARK:
                 return R.style.AppThemeDark;
             default:
                 return R.style.MyStyle;
@@ -204,9 +197,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setAppTheme(int codeStyle) {
-        SharedPreferences sharedPreferences = getSharedPreferences(NameSharedPrefrences, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(NAME_SHARED_PREFRENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(AppTheme, codeStyle);
+        editor.putInt(APP_THEME_DEFAULT, codeStyle);
         editor.apply();
+    }
+
+    private void initButtonSettings() {
+        Button btnSettings = findViewById(R.id.SettingsButton);
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent runSettings = new Intent(MainActivity.this, SettingsActivity.class);
+                runSettings.putExtra(CURRENT_THEME, curAppTheme);
+                startActivityForResult(runSettings, REQUEST_CODE_SETTING_ACTIVITY);
+            }
+        });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode != REQUEST_CODE_SETTING_ACTIVITY) {
+            super.onActivityResult(requestCode, resultCode, data);
+            return;
+        }
+
+        if (resultCode == RESULT_OK) {
+            curAppTheme = data.getExtras().getInt(CURRENT_THEME);
+            setAppTheme(curAppTheme);
+            recreate();
+        }
     }
 }

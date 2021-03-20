@@ -5,4 +5,5 @@
     <dimen name="text_margin">20dp</dimen>
     <dimen name="text_view_padding">20dp</dimen>
     <dimen name="default_margin">10dp</dimen>
+    <dimen name="size_title">50sp</dimen>
 </resources>
